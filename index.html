@@ -2,7 +2,9 @@
 <html lang="ka">
 <head>
 <meta charset="UTF-8">
-<title>ჩვენი სიყვარული ❤️</title>
+
+<!-- 🏷️ SITE NAME -->
+<title>Archil & Margarita 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
@@ -55,6 +57,7 @@ img {
   width:200px;
   border-radius:20px;
   margin-top:10px;
+  box-shadow:0 0 20px rgba(255,255,255,0.3);
 }
 
 .time {
@@ -102,15 +105,16 @@ button {
 <div class="card">
   <h1>❤️ არჩილი & მარგარიტა</h1>
 
-  <img src="photo.jpg" alt="photo">
+  <!-- 📸 SAFE PHOTO -->
+  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
 
   <div class="time" id="time"></div>
   <div class="quotes" id="quotes">💖 მიყვარხარ</div>
 
   <div class="heart">❤️</div>
 
-  <!-- 🎵 MUSIC (FIXED) -->
-  <audio id="music" loop preload="auto">
+  <!-- 🎵 MUSIC -->
+  <audio id="music" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3" type="audio/mpeg">
   </audio>
 
@@ -163,15 +167,13 @@ function createHeart(){
 }
 setInterval(createHeart,200);
 
-// 🎵 FIXED MUSIC START
+// 🎵 MUSIC FIX
 function startMusic(){
-  const music = document.getElementById("music");
-  music.volume = 0.6;
+  const music=document.getElementById("music");
+  music.volume=0.6;
 
-  music.play().then(()=>{
-    console.log("music playing");
-  }).catch(()=>{
-    alert("დააჭირე კიდევ ერთხელ 🎵 (ბრაუზერის დაცვაა)");
+  music.play().catch(()=>{
+    alert("დააჭირე კიდევ ერთხელ 🎵");
   });
 }
 
