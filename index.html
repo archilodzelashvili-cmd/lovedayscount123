@@ -1,100 +1,100 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-  <meta charset="UTF-8">
-  <title>ჩვენი სიყვარული ❤️</title>
+<meta charset="UTF-8">
+<title>ჩვენი სიყვარული ❤️</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Poppins', sans-serif;
-      color: white;
-      flex-direction: column;
+<style>
+body {
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Poppins;
+  color:white;
+  flex-direction:column;
 
-      background: #1a001f;
-      background-image:
-        radial-gradient(circle at 20% 20%, #ff4d6d 0%, transparent 25%),
-        radial-gradient(circle at 80% 30%, #ffb6c1 0%, transparent 25%),
-        radial-gradient(circle at 50% 80%, #ff4d6d 0%, transparent 25%);
-      animation: bgMove 6s ease-in-out infinite alternate;
-    }
+  background:#1a001f;
+  background-image:
+    radial-gradient(circle at 20% 20%, #ff4d6d 0%, transparent 25%),
+    radial-gradient(circle at 80% 30%, #ffb6c1 0%, transparent 25%),
+    radial-gradient(circle at 50% 80%, #ff4d6d 0%, transparent 25%);
+  animation:bgMove 6s ease-in-out infinite alternate;
+}
 
-    @keyframes bgMove {
-      0% {filter: hue-rotate(0deg);}
-      100% {filter: hue-rotate(25deg);}
-    }
+@keyframes bgMove {
+  0% {filter:hue-rotate(0deg);}
+  100% {filter:hue-rotate(25deg);}
+}
 
-    .card {
-      background: rgba(0,0,0,0.55);
-      padding: 30px;
-      border-radius: 25px;
-      text-align: center;
-      box-shadow: 0 0 50px rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-    }
+.card {
+  background:rgba(0,0,0,0.55);
+  padding:30px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+}
 
-    h1 {
-      margin: 0;
-      font-size: 28px;
-      animation: glow 2s infinite;
-    }
+h1 {
+  margin:0;
+  font-size:28px;
+  animation:glow 2s infinite;
+}
 
-    @keyframes glow {
-      0%,100% {text-shadow: 0 0 10px #fff;}
-      50% {text-shadow: 0 0 25px #ff4d6d;}
-    }
+@keyframes glow {
+  0%,100% {text-shadow:0 0 10px #fff;}
+  50% {text-shadow:0 0 25px #ff4d6d;}
+}
 
-    img {
-      width: 200px;
-      border-radius: 20px;
-      margin-top: 10px;
-    }
+img {
+  width:200px;
+  border-radius:20px;
+  margin-top:10px;
+}
 
-    .time {
-      font-size: 20px;
-      margin: 10px 0;
-    }
+.time {
+  font-size:20px;
+  margin:10px 0;
+}
 
-    .quotes {
-      font-size: 18px;
-      margin-top: 10px;
-    }
+.quotes {
+  font-size:18px;
+  margin-top:10px;
+}
 
-    .heart {
-      font-size: 45px;
-      animation: beat 1s infinite;
-    }
+.heart {
+  font-size:45px;
+  animation:beat 1s infinite;
+}
 
-    @keyframes beat {
-      0%,100% {transform: scale(1);}
-      50% {transform: scale(1.4);}
-    }
+@keyframes beat {
+  0%,100% {transform:scale(1);}
+  50% {transform:scale(1.4);}
+}
 
-    .heart-float {
-      position: fixed;
-      animation: floatUp 5s linear;
-    }
+.heart-float {
+  position:fixed;
+  animation:floatUp 5s linear;
+}
 
-    @keyframes floatUp {
-      0% {transform: translateY(0); opacity: 1;}
-      100% {transform: translateY(-120vh); opacity: 0;}
-    }
+@keyframes floatUp {
+  0% {transform:translateY(0); opacity:1;}
+  100% {transform:translateY(-120vh); opacity:0;}
+}
 
-    button {
-      margin-top: 10px;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-  </style>
+button {
+  margin-top:10px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
@@ -102,72 +102,78 @@
 <div class="card">
   <h1>❤️ არჩილი & მარგარიტა</h1>
 
-  <img src="photo.jpg" alt="love photo">
+  <img src="photo.jpg" alt="photo">
 
   <div class="time" id="time"></div>
   <div class="quotes" id="quotes">💖 მიყვარხარ</div>
 
   <div class="heart">❤️</div>
 
-  <!-- 🎵 MUSIC -->
-  <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3">
+  <!-- 🎵 MUSIC (FIXED) -->
+  <audio id="music" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3" type="audio/mpeg">
   </audio>
 
-  <button onclick="document.getElementById('music').play()">
-    🎵 მუსიკის ჩართვა
-  </button>
+  <button onclick="startMusic()">🎵 მუსიკის ჩართვა</button>
 </div>
 
 <script>
-  const startDate = new Date("2026-01-10");
 
-  function updateTime() {
-    const now = new Date();
-    const diff = now - startDate;
+const startDate = new Date("2026-01-10");
 
-    const days = Math.floor(diff/(1000*60*60*24));
-    const hours = Math.floor((diff/(1000*60*60))%24);
-    const minutes = Math.floor((diff/(1000*60))%60);
-    const seconds = Math.floor((diff/1000)%60);
+function updateTime(){
+  const now=new Date();
+  const diff=now-startDate;
 
-    document.getElementById("time").innerText =
-      days+" დღე "+hours+" საათი "+minutes+" წუთი "+seconds+" წამი";
-  }
+  const d=Math.floor(diff/(1000*60*60*24));
+  const h=Math.floor((diff/(1000*60*60))%24);
+  const m=Math.floor((diff/(1000*60))%60);
+  const s=Math.floor((diff/1000)%60);
 
-  setInterval(updateTime,1000);
-  updateTime();
+  document.getElementById("time").innerText =
+    d+" დღე "+h+" საათი "+m+" წუთი "+s+" წამი";
+}
 
-  const quotes = [
-    "💖 მიყვარხარ",
-    "💫 ჩემი სიხარული ხარ",
-    "🤍 ჩემი მშვიდობა ხარ",
-    "💘 სულ შენზე ვფიქრობ",
-    "✨ შენ ჩემი ყველაფერი ხარ"
-  ];
+setInterval(updateTime,1000);
+updateTime();
 
-  setInterval(()=>{
-    document.getElementById("quotes").innerText =
-      quotes[Math.floor(Math.random()*quotes.length)];
-  },2500);
+const quotes=[
+"💖 მიყვარხარ",
+"💫 ჩემი სიხარული ხარ",
+"🤍 ჩემი მშვიდობა ხარ",
+"💘 სულ შენზე ვფიქრობ",
+"✨ შენ ჩემი ყველაფერი ხარ"
+];
 
-  function createHeart(){
-    const h=document.createElement("div");
-    h.innerHTML="❤️";
-    h.className="heart-float";
-    h.style.left=Math.random()*100+"vw";
-    h.style.top="100vh";
-    h.style.fontSize=(10+Math.random()*30)+"px";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),5000);
-  }
+setInterval(()=>{
+  document.getElementById("quotes").innerText =
+    quotes[Math.floor(Math.random()*quotes.length)];
+},2500);
 
-  setInterval(createHeart,200);
+// hearts
+function createHeart(){
+  const h=document.createElement("div");
+  h.innerHTML="❤️";
+  h.className="heart-float";
+  h.style.left=Math.random()*100+"vw";
+  h.style.top="100vh";
+  h.style.fontSize=(10+Math.random()*30)+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+}
+setInterval(createHeart,200);
 
-  // 🔥 FIX: autoplay blocked workaround
-  document.body.addEventListener("click", function () {
-    document.getElementById("music").play();
-  }, { once: true });
+// 🎵 FIXED MUSIC START
+function startMusic(){
+  const music = document.getElementById("music");
+  music.volume = 0.6;
+
+  music.play().then(()=>{
+    console.log("music playing");
+  }).catch(()=>{
+    alert("დააჭირე კიდევ ერთხელ 🎵 (ბრაუზერის დაცვაა)");
+  });
+}
 
 </script>
 
