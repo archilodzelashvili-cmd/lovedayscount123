@@ -55,11 +55,6 @@
       width: 200px;
       border-radius: 20px;
       margin-top: 10px;
-      transition: 0.3s;
-    }
-
-    img:active {
-      transform: scale(1.1);
     }
 
     .time {
@@ -92,14 +87,12 @@
       100% {transform: translateY(-120vh); opacity: 0;}
     }
 
-    /* popup */
-    .popup {
-      position: fixed;
-      top: 20px;
-      background: rgba(0,0,0,0.7);
-      padding: 10px 20px;
-      border-radius: 20px;
-      display: none;
+    button {
+      margin-top: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -109,11 +102,11 @@
 <div class="card">
   <h1>❤️ არჩილი & მარგარიტა</h1>
 
-  <!-- 📸 SLIDER -->
-  <img id="photo" src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+  <img src="photo.jpg" alt="love photo">
 
   <div class="time" id="time"></div>
   <div class="quotes" id="quotes">💖 მიყვარხარ</div>
+
   <div class="heart">❤️</div>
 
   <!-- 🎵 MUSIC -->
@@ -121,27 +114,25 @@
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3">
   </audio>
 
-  <button onclick="music.play()" style="margin-top:10px;padding:8px 12px;border:none;border-radius:10px;">
-    🎵 Play Music
+  <button onclick="document.getElementById('music').play()">
+    🎵 მუსიკის ჩართვა
   </button>
 </div>
-
-<div class="popup" id="popup">💌 მიყვარხარ ძალიან ❤️</div>
 
 <script>
   const startDate = new Date("2026-01-10");
 
-  function updateTime(){
+  function updateTime() {
     const now = new Date();
     const diff = now - startDate;
 
-    const d = Math.floor(diff/(1000*60*60*24));
-    const h = Math.floor((diff/(1000*60*60))%24);
-    const m = Math.floor((diff/(1000*60))%60);
-    const s = Math.floor((diff/1000)%60);
+    const days = Math.floor(diff/(1000*60*60*24));
+    const hours = Math.floor((diff/(1000*60*60))%24);
+    const minutes = Math.floor((diff/(1000*60))%60);
+    const seconds = Math.floor((diff/1000)%60);
 
     document.getElementById("time").innerText =
-      d+" დღე "+h+" საათი "+m+" წუთი "+s+" წამი";
+      days+" დღე "+hours+" საათი "+minutes+" წუთი "+seconds+" წამი";
   }
 
   setInterval(updateTime,1000);
@@ -160,7 +151,6 @@
       quotes[Math.floor(Math.random()*quotes.length)];
   },2500);
 
-  // hearts
   function createHeart(){
     const h=document.createElement("div");
     h.innerHTML="❤️";
@@ -171,39 +161,14 @@
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),5000);
   }
+
   setInterval(createHeart,200);
 
-  // click explosion
-  document.addEventListener("click",(e)=>{
-    for(let i=0;i<6;i++){
-      const h=document.createElement("div");
-      h.innerHTML="❤️";
-      h.style.position="fixed";
-      h.style.left=e.clientX+"px";
-      h.style.top=e.clientY+"px";
-      h.style.animation="floatUp 1s linear";
-      document.body.appendChild(h);
-      setTimeout(()=>h.remove(),1000);
-    }
-  });
+  // 🔥 FIX: autoplay blocked workaround
+  document.body.addEventListener("click", function () {
+    document.getElementById("music").play();
+  }, { once: true });
 
-  // popup
-  setTimeout(()=>{
-    document.getElementById("popup").style.display="block";
-  },3000);
-
-  // simple photo slider
-  const photos = [
-    "https://images.unsplash.com/photo-1517841905240-472988babdf9",
-    "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-    "https://images.unsplash.com/photo-1524504388940-b1c1722653e1"
-  ];
-
-  let i=0;
-  setInterval(()=>{
-    i = (i+1)%photos.length;
-    document.getElementById("photo").src = photos[i];
-  },3000);
 </script>
 
 </body>
