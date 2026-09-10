@@ -2,218 +2,119 @@
 <html lang="ka">
 <head>
 <meta charset="UTF-8">
-<title>Archil & Margarita 💖</title>
+<title>Our Love Story 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin:0;
-  height:100vh;
-  overflow:hidden;
-  font-family:Poppins;
-  color:white;
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Poppins;
+background:linear-gradient(-45deg,#1a001f,#3a0a2d,#1b0030,#4a0b3d);
+background-size:400% 400%;
+animation:bg 8s infinite;
+color:white;
+overflow:hidden;
 }
 
-/* 🎬 INTRO */
-#intro{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:black;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  animation: fadeOut 2.5s ease 3.5s forwards;
-}
-
-#intro h1{
-  font-size:28px;
-  animation: glow 1.5s infinite;
-}
-
-#intro p{
-  opacity:0.7;
-}
-
-@keyframes glow{
-  0%,100%{text-shadow:0 0 10px #fff;}
-  50%{text-shadow:0 0 25px #ff4d6d;}
-}
-
-@keyframes fadeOut{
-  to{opacity:0;visibility:hidden;}
-}
-
-/* 🌈 BACKGROUND */
-.main{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-
-  background: linear-gradient(-45deg,#1a001f,#3a0a2d,#1b0030,#4a0b3d);
-  background-size:400% 400%;
-  animation: gradientMove 8s ease infinite;
-}
-
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
 .card{
-  background:rgba(0,0,0,0.55);
-  padding:30px;
-  border-radius:25px;
-  text-align:center;
-  backdrop-filter:blur(10px);
-  box-shadow:0 0 60px rgba(255,0,100,0.2);
-  max-width:320px;
+background:rgba(0,0,0,0.6);
+padding:25px;
+border-radius:20px;
+text-align:center;
+width:320px;
+backdrop-filter:blur(10px);
+animation:fade 0.8s;
 }
 
-/* 📸 IMAGE GLOW */
+@keyframes fade{
+from{opacity:0; transform:scale(0.9);}
+to{opacity:1; transform:scale(1);}
+}
+
 img{
-  width:200px;
-  border-radius:20px;
-  margin-top:10px;
-  box-shadow:0 0 25px rgba(255,80,120,0.5);
-  animation: pulse 2s infinite;
+width:100%;
+border-radius:15px;
+box-shadow:0 0 25px rgba(255,100,150,0.4);
 }
 
-@keyframes pulse{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.03);}
-}
+h2{margin:10px 0;}
 
-/* ❤️ HEART */
-.heart{
-  font-size:45px;
-  animation: beat 1s infinite;
-}
+p{font-size:14px; opacity:0.9;}
 
-@keyframes beat{
-  0%,100%{transform:scale(1);}
-  50%{transform:scale(1.5);}
-}
-
-/* 💖 FLOAT HEARTS */
-.heart-float{
-  position:fixed;
-  animation: floatUp 5s linear;
-}
-
-@keyframes floatUp{
-  0%{transform:translateY(0);opacity:1;}
-  100%{transform:translateY(-120vh);opacity:0;}
-}
-
-/* 💌 TEXT */
-.quotes{
-  margin-top:10px;
-  font-size:16px;
-  min-height:20px;
-}
-
-/* 🎵 BUTTON */
 button{
-  margin-top:10px;
-  padding:10px 14px;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
+margin-top:10px;
+padding:10px;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🎬 INTRO -->
-<div id="intro">
-  <h1>💖 Our Love Story Loading...</h1>
-  <p>preparing memories...</p>
-</div>
-
-<!-- 🌈 MAIN -->
-<div class="main">
-
 <div class="card">
 
-<h1>❤️ არჩილი & მარგარიტა</h1>
+<h2 id="title">💖 Story 1</h2>
 
-<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+<img id="img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
 
-<div id="time"></div>
-<div class="quotes" id="quotes">💖 მიყვარხარ</div>
+<p id="text">ეს არის ჩვენი ისტორიის დასაწყისი...</p>
 
-<div class="heart">❤️</div>
+<button onclick="next()">➡ Next Story</button>
 
-<!-- 🎵 MUSIC -->
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3">
-</audio>
-
-<button onclick="unlockMusic()">🎵 Start Love Music</button>
-
-</div>
 </div>
 
 <script>
 
-/* 🧠 TIMER */
-const startDate = new Date("2026-01-10");
-
-function updateTime(){
-  const now=new Date();
-  const diff=now-startDate;
-
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff/(1000*60*60))%24);
-  const m=Math.floor((diff/(1000*60))%60);
-  const s=Math.floor((diff/1000)%60);
-
-  document.getElementById("time").innerText =
-  `💞 ${d} დღე ${h} საათი ${m} წუთი ${s} წამი ერთად`;
+const stories=[
+{
+img:"https://images.unsplash.com/photo-1517841905240-472988babdf9",
+title:"💖 Story 1",
+text:"ეს არის ჩვენი ისტორიის დასაწყისი..."
+},
+{
+img:"https://images.unsplash.com/photo-1529333166437-7750a6dd5a70",
+title:"💫 Story 2",
+text:"პირველი ემოციები და ღიმილი ერთად..."
+},
+{
+img:"https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+title:"💞 Story 3",
+text:"ჩვენი დღეები უფრო ლამაზი გახდა..."
+},
+{
+img:"https://images.unsplash.com/photo-1518199266791-5375a83190b7",
+title:"💘 Story 4",
+text:"სიყვარული ყოველდღე იზრდება..."
+},
+{
+img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+title:"❤️ Final Story",
+text:"და ეს მხოლოდ დასაწყისია... უსასრულო ჩვენ ❤️"
 }
-setInterval(updateTime,1000);
-updateTime();
-
-/* 💌 ROTATING LOVE TEXT */
-const quotes=[
-"შენ ხარ ჩემი მშვიდობა 🤍",
-"შენ ხარ ჩემი სიხარული 💖",
-"შენ გარეშე დღე არ არსებობს 💫",
-"მიყვარხარ უსასრულოდ 💘",
-"შენ ჩემი ისტორია ხარ ✨"
 ];
 
-setInterval(()=>{
-document.getElementById("quotes").innerText =
-quotes[Math.floor(Math.random()*quotes.length)];
-},2500);
+let i=0;
 
-/* 💖 HEARTS */
-function heart(){
-const h=document.createElement("div");
-h.innerHTML="❤️";
-h.className="heart-float";
-h.style.left=Math.random()*100+"vw";
-h.style.top="100vh";
-h.style.fontSize=(10+Math.random()*30)+"px";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),5000);
-}
-setInterval(heart,180);
+function next(){
+i++;
+if(i>=stories.length) i=0;
 
-/* 🎵 MUSIC UNLOCK */
-function unlockMusic(){
-const m=document.getElementById("music");
-m.volume=0.6;
-m.play().catch(()=>alert("დააჭირე კიდევ ერთხელ 🎵"));
+document.getElementById("img").src=stories[i].img;
+document.getElementById("title").innerText=stories[i].title;
+document.getElementById("text").innerText=stories[i].text;
 }
 
 </script>
