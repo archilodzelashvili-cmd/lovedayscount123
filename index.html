@@ -2,8 +2,6 @@
 <html lang="ka">
 <head>
 <meta charset="UTF-8">
-
-<!-- 🏷️ SITE NAME -->
 <title>Archil & Margarita 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
@@ -57,18 +55,10 @@ img {
   width:200px;
   border-radius:20px;
   margin-top:10px;
-  box-shadow:0 0 20px rgba(255,255,255,0.3);
 }
 
-.time {
-  font-size:20px;
-  margin:10px 0;
-}
-
-.quotes {
-  font-size:18px;
-  margin-top:10px;
-}
+.time {font-size:20px; margin:10px 0;}
+.quotes {font-size:18px; margin-top:10px;}
 
 .heart {
   font-size:45px;
@@ -90,12 +80,27 @@ img {
   100% {transform:translateY(-120vh); opacity:0;}
 }
 
+/* 🎧 MUSIC PANEL */
+.music-box {
+  margin-top:15px;
+  padding:10px;
+  background:rgba(255,255,255,0.1);
+  border-radius:15px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  width:200px;
+}
+
 button {
-  margin-top:10px;
-  padding:10px 15px;
+  padding:8px;
   border:none;
   border-radius:10px;
   cursor:pointer;
+}
+
+input[type=range] {
+  width:100%;
 }
 </style>
 </head>
@@ -105,7 +110,6 @@ button {
 <div class="card">
   <h1>❤️ არჩილი & მარგარიტა</h1>
 
-  <!-- 📸 SAFE PHOTO -->
   <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
 
   <div class="time" id="time"></div>
@@ -113,12 +117,18 @@ button {
 
   <div class="heart">❤️</div>
 
-  <!-- 🎵 MUSIC -->
+  <!-- 🎵 AUDIO -->
   <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3">
   </audio>
 
-  <button onclick="startMusic()">🎵 მუსიკის ჩართვა</button>
+  <!-- 🎧 CONTROLS -->
+  <div class="music-box">
+    <button onclick="unlockMusic()">🎵 Start Music</button>
+    <label>🔊 Volume</label>
+    <input type="range" min="0" max="1" step="0.01" value="0.5"
+      oninput="setVolume(this.value)">
+  </div>
 </div>
 
 <script>
@@ -137,7 +147,6 @@ function updateTime(){
   document.getElementById("time").innerText =
     d+" დღე "+h+" საათი "+m+" წუთი "+s+" წამი";
 }
-
 setInterval(updateTime,1000);
 updateTime();
 
@@ -151,7 +160,7 @@ const quotes=[
 
 setInterval(()=>{
   document.getElementById("quotes").innerText =
-    quotes[Math.floor(Math.random()*quotes.length)];
+  quotes[Math.floor(Math.random()*quotes.length)];
 },2500);
 
 // hearts
@@ -167,14 +176,21 @@ function createHeart(){
 }
 setInterval(createHeart,200);
 
-// 🎵 MUSIC FIX
-function startMusic(){
+// 🎵 AUTOPLAY UNLOCK SYSTEM
+function unlockMusic(){
   const music=document.getElementById("music");
-  music.volume=0.6;
+  music.volume=0.5;
 
-  music.play().catch(()=>{
-    alert("დააჭირე კიდევ ერთხელ 🎵");
+  music.play().then(()=>{
+    console.log("music unlocked");
+  }).catch(()=>{
+    alert("დააჭირე კიდევ ერთხელ 🎵 ბრაუზერის ბლოკია");
   });
+}
+
+// 🔊 VOLUME CONTROL
+function setVolume(v){
+  document.getElementById("music").volume = v;
 }
 
 </script>
