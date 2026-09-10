@@ -15,17 +15,21 @@
       justify-content: center;
       align-items: center;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff4d6d, #6a00f4, #00c6ff);
-      background-size: 400% 400%;
-      animation: bgMove 10s ease infinite;
       color: white;
       flex-direction: column;
+
+      /* 💖 HEART BACKGROUND */
+      background: #1a001f;
+      background-image:
+        radial-gradient(circle at 20% 20%, #ff4d6d 0%, transparent 25%),
+        radial-gradient(circle at 80% 30%, #ffb6c1 0%, transparent 25%),
+        radial-gradient(circle at 50% 80%, #ff4d6d 0%, transparent 25%);
+      animation: bgMove 6s ease-in-out infinite alternate;
     }
 
     @keyframes bgMove {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% {filter: hue-rotate(0deg);}
+      100% {filter: hue-rotate(25deg);}
     }
 
     .card {
@@ -50,15 +54,10 @@
     }
 
     img {
-      width: 180px;
+      width: 200px;
       border-radius: 20px;
       margin-top: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    img:active {
-      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
     .time {
@@ -92,16 +91,6 @@
       position: fixed;
       animation: floatUp 6s linear;
     }
-
-    /* POPUP */
-    .popup {
-      position: fixed;
-      top: 20px;
-      background: rgba(0,0,0,0.7);
-      padding: 10px 20px;
-      border-radius: 20px;
-      display: none;
-    }
   </style>
 </head>
 
@@ -110,26 +99,14 @@
 <div class="card">
   <h1>❤️ არჩილი & მარგარიტა</h1>
 
-  <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9">
+  <img src="photo.jpg" alt="love photo">
 
   <div class="time" id="time"></div>
 
   <div class="quotes" id="quotes">💖 მიყვარხარ</div>
 
   <div class="heart">❤️</div>
-
-  <audio id="music" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_6d0b8f2d1d.mp3?filename=romantic-ambient-110598.mp3">
-  </audio>
-
-  <button onclick="document.getElementById('music').play()" 
-    style="margin-top:10px;padding:10px 15px;border:none;border-radius:10px;">
-    🎵 Play Music
-  </button>
-
 </div>
-
-<div class="popup" id="popup">💌 მიყვარხარ ძალიან ❤️</div>
 
 <script>
   const startDate = new Date("2026-01-10");
@@ -155,7 +132,8 @@
     "💫 ჩემი სიხარული ხარ",
     "🤍 ჩემი მშვიდობა ხარ",
     "💘 სულ შენზე ვფიქრობ",
-    "✨ შენ ჩემი ყველაფერი ხარ"
+    "✨ შენ ჩემი ყველაფერი ხარ",
+    "❤️ ყოველ დღე უფრო მიყვარხარ"
   ];
 
   setInterval(()=>{
@@ -173,27 +151,8 @@
     document.body.appendChild(h);
     setTimeout(()=>h.remove(),6000);
   }
+
   setInterval(createHeart,200);
-
-  // click explosion hearts
-  document.addEventListener("click",(e)=>{
-    for(let i=0;i<6;i++){
-      const h=document.createElement("div");
-      h.innerHTML="❤️";
-      h.style.position="fixed";
-      h.style.left=e.clientX+"px";
-      h.style.top=e.clientY+"px";
-      h.style.fontSize="20px";
-      h.style.animation="floatUp 1s linear";
-      document.body.appendChild(h);
-      setTimeout(()=>h.remove(),1000);
-    }
-  });
-
-  // popup
-  setTimeout(()=>{
-    document.getElementById("popup").style.display="block";
-  },3000);
 </script>
 
 </body>
